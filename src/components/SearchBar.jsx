@@ -1,43 +1,51 @@
-// import React, { useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
-// function SearchBar() {
-//     const [city, setCity] = useState("");
-//     const navigate = useNavigate();
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchFromAPI } from "../utils/fetchFromAPI";
 
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-    
-//         if(city){
-//             navigate(`/current.json/${city}`);
-//             setCity('');
-//         }
-//       }
-//   return (
-//     <div>
-//         <input
-//         placeholder="Enter a city"
-//         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//         type="text"
-//         onChange={(e) => setCity(e.target.value)}
-//       />
-//       <button>
-//         {/* <svg
-//           xmlns="http://www.w3.org/2000/svg"
-//           fill="none"
-//           viewBox="0 0 24 24"
-//           strokeWidth={1.5}
-//           stroke="currentColor"
-//           className="w-6 h-6"
-//         >
-//           <path
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-//           />
-//         </svg> */}
-//       </button>
-//     </div>
-//   )
-// }
+function SearchBar({setWeather, setError, setLocation}) {
+  const [city, setCity] = useState("");
+  const navigate = useNavigate();
 
-// export default SearchBar
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(city) {
+      navigate(`/current/${city}`);
+      setCity('');
+    }
+  };
+
+  return (
+    <div>
+      <form
+        className="border border-gray-500 w-96 p-2 flex  bg-opacity-30 bg-slate-400"
+        onSubmit={handleSubmit}
+      >
+        <input
+        placeholder="Search a city"
+          type="text"
+          className="ml-2 bg-transparent text-white focus:outline-0 flex-1"
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button type="submit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 text-white"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default SearchBar;

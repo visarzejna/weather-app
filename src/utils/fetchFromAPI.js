@@ -17,7 +17,7 @@ export const fetchFromAPI = async (url) => {
 }
 
 export const getData = async () => {
-    const res = await axios.get('https://geolocation-db.com/json/')
+    const {data} = await axios.get('https://geolocation-db.com/json/')
 
-    return res; 
+    return data; 
   }
