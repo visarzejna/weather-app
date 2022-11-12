@@ -4,6 +4,7 @@ import { fetchFromAPI } from "../utils/fetchFromAPI";
 import Spinner from "./Spinner";
 import WeatherInfo from "./WeatherInfo";
 import moment from "moment";
+import SearchBar from "./SearchBar";
 
 function CurrentWeather({ ip, isCelciusUnit }) {
   const [location, setLocation] = useState({});
@@ -14,6 +15,9 @@ function CurrentWeather({ ip, isCelciusUnit }) {
   const { city } = useParams();
 
   useEffect(() => {
+    if(city){
+      return;
+    }
     if (ip) {
       setLoading(true);
       fetchFromAPI(`forecast.json?part=snippet&q=${ip}&days=3`)
@@ -24,7 +28,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
           setError("");
           setTimeout(function () {
             setLoading(false);
-          }, 500);
+          }, 400);
         })
         .catch((err) => {
           const {
@@ -48,7 +52,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
           setError("");
           setTimeout(function () {
             setLoading(false);
-          }, 500);
+          }, 400);
         })
         .catch((err) => {
           const {
@@ -63,7 +67,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
   }, [city]);
 
   return (
-    <div className="p-3  bg-black bg-opacity-70 h-2/3 mt-44 flex justify-center ">
+    <div className="p-3  bg-black bg-opacity-70 h-auto mt-44 flex justify-center ">
       <div className=" flex flex-col justify-evenly  items-center text-center">
         {error && (
           <div
@@ -78,7 +82,10 @@ function CurrentWeather({ ip, isCelciusUnit }) {
         ) : (
           location.name && (
             <div>
-              <div className="border border-gray  text-white flex justify-center items-center text-2xl p-5 bg-slate-400 bg-opacity-20">
+              <div className="sm:hidden">
+                <SearchBar />
+              </div>
+              <div className="border border-gray my-2 text-white flex justify-center items-center text-2xl p-5 bg-slate-400 bg-opacity-20">
                 <WeatherInfo
                   weather={weather}
                   location={location}
@@ -86,7 +93,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
                 />
               </div>
 
-              <ul className="flex">
+              <ul className="flex flex-col gap-2 lg:flex-row">
                 {forecast.forecastday.map((forecast) => (
                   <li key={forecast.date}>
                     <div className="border border-gray   text-white flex flex-col justify-center items-center text-2xl p-5 bg-slate-400 bg-opacity-20">
@@ -95,7 +102,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
                       </div>
                       <WeatherInfo
                         className="gap-2"
-                        weather={forecast.day}
+                        weather={forecast}
                         location={location}
                         isCelciusUnit={isCelciusUnit}
                       />

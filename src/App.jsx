@@ -18,7 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="h-screen w-screen bg-weather-background bg-no-repeat bg-cover">
+      <div className="lg:h-screen lg:w-screen  bg-weather-background bg-no-repeat bg-cover">
         <Navbar
           setIsCelciusUnit={setIsCelciusUnit}
           isCelciusUnit={isCelciusUnit}
@@ -27,7 +27,7 @@ function App() {
           <Route path="/" exact element={<CurrentWeather ip={ip} isCelciusUnit={isCelciusUnit}/>} />
           <Route path="/current/:city" exact element={<CurrentWeather ip={ip} isCelciusUnit={isCelciusUnit}/>} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   );
