@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   content: [
     "./index.html",
@@ -8,6 +9,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'weather-background': "url('https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+      },
+      fontFamily: {
+        roboto: ['"Roboto"', ...defaultTheme.fontFamily.sans]
       }
     }
   },

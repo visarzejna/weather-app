@@ -65,7 +65,7 @@ function WeatherInfo({ weather, location, isCelciusUnit }) {
               >
                 {weather.hour.map((hourly) => (
                   <li
-                    className="m-4 min-w-[40px] text-lg flex flex-col items-center border-gray-500"
+                    className="m-4 min-w-[40px] text-lg flex flex-col items-center"
                     key={hourly.time}
                   >
                     <p className="text-white">

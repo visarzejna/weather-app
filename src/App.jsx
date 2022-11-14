@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
+  // import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import CurrentWeather from "./components/CurrentWeather";
 
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="lg:h-screen lg:w-screen  bg-weather-background bg-no-repeat bg-cover">
+      <div className="lg:h-screen lg:w-screen font-roboto bg-weather-background bg-no-repeat bg-cover">
         <Navbar
           setIsCelciusUnit={setIsCelciusUnit}
           isCelciusUnit={isCelciusUnit}

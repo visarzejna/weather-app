@@ -96,7 +96,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
               <ul className="flex flex-col gap-2 lg:flex-row">
                 {forecast.forecastday.map((forecast) => (
                   <li key={forecast.date}>
-                    <div className="border border-gray   text-white flex flex-col justify-center items-center text-2xl p-5 bg-slate-400 bg-opacity-20">
+                    <div className="border border-gray text-white flex flex-col justify-center items-center text-2xl p-5 bg-slate-400 bg-opacity-20">
                       <div className="text-red-500">
                         {moment(forecast.date).format("dddd")}
                       </div>

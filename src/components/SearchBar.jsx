@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchFromAPI } from "../utils/fetchFromAPI";
 
-function SearchBar({setWeather, setError, setLocation}) {
+function SearchBar() {
   const [city, setCity] = useState("");
   const navigate = useNavigate();
 
