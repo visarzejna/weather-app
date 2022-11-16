@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
   // import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import CurrentWeather from "./components/CurrentWeather";
@@ -26,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<CurrentWeather ip={ip} isCelciusUnit={isCelciusUnit}/>} />
           <Route path="/current/:city" exact element={<CurrentWeather ip={ip} isCelciusUnit={isCelciusUnit}/>} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         {/* <Footer /> */}
       </div>

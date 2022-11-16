@@ -17,13 +17,13 @@ function SearchBar() {
   return (
     <div>
       <form
-        className="border border-gray-500 w-96 p-2 flex  bg-opacity-30 bg-slate-400"
+        className="border w-[342px] border-gray-500 sm:w-96 p-2 flex  bg-opacity-30 bg-slate-400"
         onSubmit={handleSubmit}
       >
         <input
         placeholder="Search a city"
           type="text"
-          className="ml-2 bg-transparent text-white focus:outline-0 flex-1"
+          className="ml-2 bg-transparent text-white focus:outline-none flex-1"
           onChange={(e) => setCity(e.target.value)}
         />
         <button type="submit">

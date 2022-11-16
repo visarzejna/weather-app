@@ -15,7 +15,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
   const { city } = useParams();
 
   useEffect(() => {
-    if(city){
+    if (city) {
       return;
     }
     if (ip) {
@@ -44,7 +44,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
   useEffect(() => {
     if (city) {
       setLoading(true);
-      fetchFromAPI(`forecast.json?part=snippet&q=${city}&days=4`)
+      fetchFromAPI(`forecast.json?part=snippet&q=${city}&days=3`)
         .then(({ location, current, forecast }) => {
           setLocation(location);
           setWeather(current);
@@ -67,25 +67,28 @@ function CurrentWeather({ ip, isCelciusUnit }) {
   }, [city]);
 
   return (
-    <div className="p-3  bg-black bg-opacity-70 h-auto mt-44 flex justify-center ">
-      <div className=" flex flex-col justify-evenly  items-center text-center">
+    <div className="p-3  bg-black bg-opacity-70 mt-44 flex justify-center ">
+      <div className="flex flex-col justify-start  items-center text-center">
+        <div className="sm:hidden">
+          <SearchBar />
+        </div>
+
         {error && (
-          <div
-            className="mt-5 p-4 mb-4 text-sm bg-opacity-50 text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-            role="alert"
-          >
-            <span className="font-medium">Oops!</span> {error}
+          <div className="h-[592px]">
+            <div
+              className="w-[342px] mt-5 p-4 mb-4 text-sm bg-opacity-50 text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+              role="alert"
+            >
+              <span className="font-medium">Oops!</span> {error}
+            </div>
           </div>
         )}
         {loading ? (
           <Spinner />
         ) : (
           location.name && (
-            <div>
-              <div className="sm:hidden">
-                <SearchBar />
-              </div>
-              <div className="border border-gray my-2 text-white flex justify-center items-center text-2xl p-5 bg-slate-400 bg-opacity-20">
+            <div className="flex flex-col justify-center items-center sm:inline">
+              <div className="w-[342px] sm:w-auto p-5 border border-gray my-2 text-white flex justify-center items-center text-2xl bg-slate-400 bg-opacity-20">
                 <WeatherInfo
                   weather={weather}
                   location={location}

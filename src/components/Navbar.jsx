@@ -4,9 +4,6 @@ import SearchBar from "./SearchBar";
 function Navbar({
   isCelciusUnit,
   setIsCelciusUnit,
-  setWeather,
-  setError,
-  setLocation,
 }) {
   const handleUnitType = () => {
     setIsCelciusUnit(!isCelciusUnit);
@@ -46,7 +43,7 @@ function Navbar({
         className="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg"
       >
         <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 h-10 w-16 ">
-          <span className="text-white">°C / °F</span>
+          <span className="text-white">°C | °F</span>
         </div>
       </button>
     </nav>
