@@ -6,7 +6,7 @@ import WeatherInfo from "./WeatherInfo";
 import moment from "moment";
 import SearchBar from "./SearchBar";
 
-function CurrentWeather({ ip, isCelciusUnit }) {
+function CurrentWeather({ ip, isCelciusUnit, isEnglish }) {
   const [location, setLocation] = useState({});
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState({});
@@ -67,14 +67,14 @@ function CurrentWeather({ ip, isCelciusUnit }) {
   }, [city]);
 
   return (
-    <div className="p-3  bg-black bg-opacity-70 mt-44 flex justify-center ">
+    <div className="p-3  bg-black bg-opacity-50 mt-10 sm:mt-44 flex justify-center ">
       <div className="flex flex-col justify-start  items-center text-center">
         <div className="sm:hidden">
           <SearchBar />
         </div>
 
         {error && (
-          <div className="h-[592px]">
+          <div className={`${location.name ? '' : 'h-screen'}`}>
             <div
               className="w-[342px] mt-5 p-4 mb-4 text-sm bg-opacity-50 text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
               role="alert"
@@ -93,6 +93,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
                   weather={weather}
                   location={location}
                   isCelciusUnit={isCelciusUnit}
+                  isEnglish={isEnglish}
                 />
               </div>
 
@@ -108,6 +109,7 @@ function CurrentWeather({ ip, isCelciusUnit }) {
                         weather={forecast}
                         location={location}
                         isCelciusUnit={isCelciusUnit}
+                        isEnglish={isEnglish}
                       />
                     </div>
                   </li>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-  // import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import CurrentWeather from "./components/CurrentWeather";
 
@@ -10,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const [isCelciusUnit, setIsCelciusUnit] = useState(true);
+  const [isEnglish, setIsEnglish] = useState(true);
   const [ip, setIp] = useState("");
 
   useEffect(() => {
@@ -21,11 +21,27 @@ function App() {
       <div className="lg:h-screen lg:w-screen font-roboto bg-weather-background bg-no-repeat bg-cover">
         <Navbar
           setIsCelciusUnit={setIsCelciusUnit}
+          setIsEnglish={setIsEnglish}
+          isEnglish={isEnglish}
           isCelciusUnit={isCelciusUnit}
         />
         <Routes>
-          <Route path="/" exact element={<CurrentWeather ip={ip} isCelciusUnit={isCelciusUnit}/>} />
-          <Route path="/current/:city" exact element={<CurrentWeather ip={ip} isCelciusUnit={isCelciusUnit}/>} />
+          <Route
+            path="/"
+            exact
+            element={
+              <CurrentWeather
+                ip={ip}
+                isEnglish={isEnglish}
+                isCelciusUnit={isCelciusUnit}
+              />
+            }
+          />
+          <Route
+            path="/current/:city"
+            exact
+            element={<CurrentWeather ip={ip} isEnglish={isEnglish} isCelciusUnit={isCelciusUnit} />}
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         {/* <Footer /> */}

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 
-function Navbar({
-  isCelciusUnit,
-  setIsCelciusUnit,
-}) {
+function Navbar({ isCelciusUnit, setIsCelciusUnit, isEnglish, setIsEnglish }) {
+  
   const handleUnitType = () => {
     setIsCelciusUnit(!isCelciusUnit);
+  };
+  
+  const handleLanguage = () => {
+    setIsEnglish(!isEnglish);
   };
 
   return (
@@ -36,16 +38,26 @@ function Navbar({
           <SearchBar />
         </div>
       </div>
-
-      <button
-        type="button"
-        onClick={handleUnitType}
-        className="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg"
-      >
-        <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 h-10 w-16 ">
-          <span className="text-white">°C | °F</span>
-        </div>
-      </button>
+      <div>
+        <button
+          type="button"
+          onClick={handleUnitType}
+          className="inline-flex mx-2 items-center relative px-2 border rounded-full hover:shadow-lg"
+        >
+          <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 h-10 w-16 ">
+            <span className="text-white">°C | °F</span>
+          </div>
+        </button>
+        <button
+          type="button"
+          onClick={handleLanguage}
+          className="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg"
+        >
+          <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 h-10 w-16 ">
+            <span className="text-white">EN | SQ</span>
+          </div>
+        </button>
+      </div>
     </nav>
   );
 }
