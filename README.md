@@ -14,4 +14,5 @@ The project is developed with React Js and Tailwind CSS and the API is provided 
 
 ## Screenshot
 
-![image](https://user-images.githubusercontent.com/61939302/202801770-bac835de-9355-449e-98c7-b24c102ba5f1.png)
+![image](https://user-images.githubusercontent.com/61939302/202802452-7bce0f2e-06fb-47e0-8681-92224a7566e1.png)
+
