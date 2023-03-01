@@ -4,6 +4,7 @@ import { fetchFromAPI } from "../utils/fetchFromAPI";
 import Spinner from "./Spinner";
 import WeatherInfo from "./WeatherInfo";
 import moment from "moment";
+import "moment/dist/locale/sq";
 import SearchBar from "./SearchBar";
 
 function CurrentWeather({ ip, isCelciusUnit, isEnglish }) {
@@ -12,6 +13,7 @@ function CurrentWeather({ ip, isCelciusUnit, isEnglish }) {
   const [forecast, setForecast] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [language, setLanguage] = useState("en");
   const { city } = useParams();
 
   useEffect(() => {
@@ -65,6 +67,14 @@ function CurrentWeather({ ip, isCelciusUnit, isEnglish }) {
         });
     }
   }, [city]);
+  useEffect(() => {
+    if (isEnglish) {
+      setLanguage("en");
+    }
+    if (!isEnglish) {
+      setLanguage("sq");
+    }
+  }, [isEnglish]);
 
   return (
     <div className="p-3  bg-black bg-opacity-50 mt-10 sm:mt-44 flex justify-center ">
@@ -74,7 +84,7 @@ function CurrentWeather({ ip, isCelciusUnit, isEnglish }) {
         </div>
 
         {error && (
-          <div className={`${location.name ? '' : 'h-screen'}`}>
+          <div className={`${location.name ? "" : "h-screen"}`}>
             <div
               className="w-[342px] mt-5 p-4 mb-4 text-sm bg-opacity-50 text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
               role="alert"
@@ -102,7 +112,7 @@ function CurrentWeather({ ip, isCelciusUnit, isEnglish }) {
                   <li key={forecast.date}>
                     <div className="border border-gray text-white flex flex-col justify-center items-center text-2xl p-5 bg-slate-400 bg-opacity-20">
                       <div className="text-red-500">
-                        {moment(forecast.date).format("dddd")}
+                        {moment(forecast.date).locale(language).format("dddd")}
                       </div>
                       <WeatherInfo
                         className="gap-2"
